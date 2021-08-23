@@ -1,7 +1,6 @@
 import React from "react";
 import { Menu, ConfigProvider, Layout } from "antd";
 import "./App.css";
-import Hello from "./components/Hello";
 import User from "./components/user";
 const { Header, Content, Footer } = Layout;
 
@@ -15,7 +14,7 @@ const App = () => (
           className="menu"
           defaultSelectedKeys={["employee"]}
         >
-          <Menu.Item key="employee">员工管理</Menu.Item>
+          <Menu.Item key="employee">学生管理</Menu.Item>
           <Menu.Item key="setting"> 系统设置</Menu.Item>
         </Menu>
       </Header>

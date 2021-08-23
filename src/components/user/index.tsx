@@ -1,16 +1,11 @@
 import React from "react";
-import Search from './search' 
+import Search from './search'
+import SearchFrom from "./searchFrom";
 import { Table, Divider ,Button} from 'antd';
 import { ColumnsType } from 'antd/es/table';
-
+// import { UserData } from './data.d'
 interface Props{}
-interface UserData{
-    id:string,
-    number:string,
-    name:string,
-    age:number
-    class:string          
-}
+
 const User : React.FC<Props> = props => {
     const data = [
         {
@@ -81,7 +76,39 @@ const User : React.FC<Props> = props => {
     ]
     return (
         <div>
-            <Search></Search>
+            {/* <Search></Search> */}
+            <SearchFrom
+                formItems={[
+                    {
+                        label:'名称',
+                        type:'input',
+                        name:'name',
+                    },
+                    {
+                        label:'年龄',
+                        type:'input',
+                        name:'age',
+                    },
+                    {
+                        label:'班级',
+                        type:'select',
+                        name:'class',
+                        selectValue: [
+                            {value:'1',text:'一班'},
+                            {value:'2',text:'二班'},
+                            {value:'3',text:'三班'}
+                        ]
+                    },
+                    {
+                        label:'得分',
+                        type:'input',
+                        name:'number',
+                    },
+                ]}
+                search={(res:any)=>{
+                    console.log(res)
+                }}
+            />
             <Divider />
             <Table
                 dataSource={data}

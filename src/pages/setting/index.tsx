@@ -9,7 +9,7 @@ interface State {
 	count: number
 }
 
-const Hello: React.FC<Props> = props => {
+const Setting: React.FC<Props> = props => {
 
 	const initState: State = {
 		count: 0
@@ -18,7 +18,7 @@ const Hello: React.FC<Props> = props => {
 
 	return (
 		<>
-			<h2>holle {props.name}</h2>
+			<h2>hello {props.name}</h2>
 			<div>
 				
 			</div>
@@ -26,4 +26,4 @@ const Hello: React.FC<Props> = props => {
 	)
 }
 
-export default Hello;
+export default Setting;

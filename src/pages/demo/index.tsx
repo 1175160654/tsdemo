@@ -1,12 +1,13 @@
 import React, { useCallback, useState, useMemo } from "react";
 import { Card, Row, Col,Button } from "antd";
 import Btn from "./btn";
-
+import Request from "./useRquest";
 
 const Demo: React.FC = () => {
     const [count1, setCount1] = useState(0);
     const [count2, setCount2] = useState(0);
     const [count3, setCount3] = useState(0);
+    
     const handleClick = useCallback(() => {
         setCount2(count2 + 1)
     }, [count2])
@@ -28,8 +29,8 @@ const Demo: React.FC = () => {
                     </Card>
                 </Col>
                 <Col>
-                    <Card title="useMemo用法" style={{ width: 400 }}>
-                        
+                    <Card title="ahooks-useRequest" style={{ width: 400 }}>
+                        <Request></Request>
                     </Card>
                 </Col>
             </Row>

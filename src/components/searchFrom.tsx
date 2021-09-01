@@ -4,6 +4,7 @@ import { Form, Select, Input, Button, Col, Row } from 'antd';
 interface Props {
     formItems: Item[];
     search: Function;
+    save:()=>void;
 }
 interface Item {
     type: string;
@@ -85,6 +86,7 @@ const SearchFrom: React.FC<Props> = (props) => {
                         type="dashed" 
                         style={{ marginLeft: 8 }}
                         onClick={() => {
+                            props.save()
                         }}
                     >
                         新增

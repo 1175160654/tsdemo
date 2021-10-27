@@ -44,7 +44,7 @@ const User: React.FC<Props> = props => {
                 key:'理科',
                 value:'2'
             },
-            class: 1
+            class: 5
         },
         {
             id: '103',
@@ -55,7 +55,7 @@ const User: React.FC<Props> = props => {
                 key:'理科',
                 value:'2'
             },
-            class: 2
+            class: 6
         }
     ]
     const columns: ColumnsType<UserData> = [

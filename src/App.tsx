@@ -23,7 +23,7 @@ const App = ({ match }: any) => {
               <Link to='/user'>列表</Link>
             </Menu.Item>
             <Menu.Item key="setting">
-              <Link to='/setting'>....</Link>
+              <Link to='/setting'>手写js</Link>
             </Menu.Item>
             <Menu.Item key="demo">
               <Link to='/demo'>Hook</Link>

@@ -6,20 +6,26 @@ interface Props {
     close: () => void;
 }
 
-interface InitState{
-    value:string;
-}
 const Save: React.FC<Props> = (props) => {
     const [form] = Form.useForm();
-    const init:InitState={
-        value:''
+    const initialValues= {
+        id:props.data.id ||'',
+        name: props.data.name ||'',
+        number:props.data.number||'',
+        age:props.data.age|| '',
+        difference:props.data.difference?.value || '',
+        class:props.data.class?.toString()|| ''
     }
     const[type,setType]=useState<string>();
-    // useEffect(()=>{
-    //     if(props.data){
-    //         setType(props.data.difference?.value)
-    //     }
-    // },[])
+    const onOk=()=>{
+        const data = form.getFieldsValue();
+        console.log(data)
+    }
+    useEffect(()=>{
+        if(props.data){
+            setType(props.data.difference?.value)
+        }
+    },[])
     return (
         <Modal
             title={`${props.data?.id ? '编辑' : '新增'}`}
@@ -27,23 +33,26 @@ const Save: React.FC<Props> = (props) => {
             onCancel={() => {
                 props.close()
             }}
+            onOk={onOk}
         >
-            <Form form={form}>
-                <Form.Item name='name' label="名字">
-                    <Input defaultValue={props.data?.name}></Input>
+            <Form form={form} initialValues={initialValues}>
+                <Form.Item name='name' label="名字" >
+                    <Input></Input>
                 </Form.Item>
                 <Form.Item name='number' label="评分">
-                    <Input defaultValue={props.data?.number}></Input>
+                    <Input ></Input>
                 </Form.Item>
                 <Form.Item name='age' label="年龄">
-                    <Input defaultValue={props.data?.age}></Input>
+                    <Input ></Input>
                 </Form.Item>
                 <Row>
                     <Col span={6}>
                         <Form.Item name='difference' label="文理">
-                            <Select defaultValue={props.data.difference?.value} 
+                            <Select 
                             onChange={(e)=>{
-                                    setType(e)
+                                    console.log(typeof(e))
+                                    console.log(e?.toString())
+                                    setType(e?.toString())
                             }}
                             >
                                 <Select.Option value='1'>文科</Select.Option>
@@ -53,8 +62,8 @@ const Save: React.FC<Props> = (props) => {
                     </Col>
                     {
                         type==='1' && <Col span={12} style={{paddingLeft:10}}>
-                            <Form.Item name='calss' label="文科班级" >
-                                <Select defaultValue={props.data.class?.toString()}>
+                            <Form.Item name='class' label="文科班级" >
+                                <Select >
                                     <Select.Option value='1'>文科一班</Select.Option>
                                     <Select.Option value='2'>文科二班</Select.Option>
                                     <Select.Option value='3'>文科三班</Select.Option>
@@ -64,11 +73,11 @@ const Save: React.FC<Props> = (props) => {
                     }
                     {
                         type==='2' && <Col span={12} style={{paddingLeft:10}}>
-                            <Form.Item name='calss' label="理科班级" >
-                                <Select defaultValue={props.data.class?.toString()}>
-                                    <Select.Option value='1'>理科一班</Select.Option>
-                                    <Select.Option value='2'>理科二班</Select.Option>
-                                    <Select.Option value='3'>理科三班</Select.Option>
+                            <Form.Item name='class' label="理科班级" >
+                                <Select >
+                                    <Select.Option value='4'>理科一班</Select.Option>
+                                    <Select.Option value='5'>理科二班</Select.Option>
+                                    <Select.Option value='6'>理科三班</Select.Option>
                                 </Select>
                             </Form.Item>
                         </Col>
